@@ -1,85 +1,208 @@
-/* Border box declaration 
-https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+/* Border-box sizing */
 html {
   box-sizing: border-box;
 }
-/* inherit border-box on all elements in the universe and before and after
- */
-*, 
-*:before, 
+
+*,
+*:before,
 *:after {
   box-sizing: inherit;
 }
 
 body {
-	font-family: Arial, Geneva, sans-serif;
+  margin: 0;
+  font-family: Arial, Geneva, sans-serif;
+  background-color: #f4eee6;
+  color: #333;
 }
+
 a {
-	color: #2772B0;
+  color: #2772b0;
+  font-weight: bold;
 }
+
 .wrapper {
-	width: 97%;
-	max-width: 1200px;
-	margin: 0 auto;
-	float: none;
-	background-color: #fff;
+  width: 97%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 20px;
 }
 
 div img {
-	width: 100%;
-	max-width: 225px; 
+  display: block;
+  width: 100%;
+  max-width: 225px;
+  margin: 0 auto 15px;
 }
 
-/* grid system -- mobile first! */
-/* flex contatiner */
-
-.row {
-	display: flex;
-	flex-flow: row wrap;
+/* Shared box styling */
+[class*="col-"],
+.third-small,
+.third-large,
+.fourth-row,
+.fifth-item,
+.sixth-row article {
+  margin-left: 4%;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-/* attribute selector to give some margin between columns and apply styles to flex items */
-
-[class*="col-"] {
-	margin-left: 4%;
-	flex: 0 0 92%;
+h3 {
+  margin-top: 0;
+  color: #633b1f;
 }
 
-/* Add background colors to see how much space each column is taking */
+p {
+  line-height: 1.5;
+}
 
+/* First two rows */
 .col-1 {
-	background-color: #A3CDD9;
+  background-color: #a3cdd9;
 }
 
 .col-2 {
-	background-color: #FFFCE6;
+  background-color: #fffce6;
 }
 
-/* Tablet Landscape Screen Sizes */
-@media only screen and (min-width: 480px)  {
-	
+/* Mobile layout */
+[class*="col-"] {
+  flex: 0 0 92%;
+}
+
+.third-small,
+.third-large,
+.fourth-row,
+.fifth-item,
+.sixth-row article {
+  flex: 0 0 92%;
+}
+
+.third-small {
+  background-color: #ead7f5;
+}
+
+.third-large {
+  background-color: #d6e8f7;
+}
+
+.fourth-row {
+  background-color: #f6e7a1;
+}
+
+.fifth-one {
+  background-color: #d5f0c1;
+}
+
+.fifth-two {
+  background-color: #f7c8c8;
+}
+
+.fifth-three {
+  background-color: #c8d9f7;
+}
+
+.sixth-row article {
+  background-color: #d9c2ec;
+}
+
+/* Tablet layout */
+@media only screen and (min-width: 480px) {
   .col-1,
   .col-2 {
-		flex: 0 0 44%;
-	}
-  
-  
+    flex: 0 0 44%;
+  }
 
+  /* Row 3: two equal-width items on tablet */
+  .third-small,
+  .third-large {
+    flex: 0 0 44%;
+  }
 
+  /* Row 4: one wide item */
+  .fourth-row {
+    flex: 0 0 92%;
+  }
 
+  /* Row 5: two items per line */
+  .fifth-item {
+    flex: 0 0 44%;
+  }
+
+  /* Changes the order when resized */
+  .fifth-three {
+    order: -1;
+  }
+
+  /* Row 6: four items per line on tablet */
+  .sixth-row article {
+    flex: 0 0 44%;
+  }
 }
-/* Desktop screen Sizes */
-@media only screen and (min-width: 768px) {
-  
-  
- 	.col-1 {
-		flex: 0 0 20%;
-	}
-  
-  
-  
-	.col-2 {
-		flex: 0 0 44%;
-	}
 
+/* Desktop layout */
+@media only screen and (min-width: 768px) {
+  /* Row 1: four 1-column items */
+  .col-1 {
+    flex: 0 0 20%;
+  }
+
+  /* Row 2: two 2-column items */
+  .col-2 {
+    flex: 0 0 44%;
+  }
+
+  /* Row 3: 1-column item and 3-column item */
+  .third-small {
+    flex: 0 0 20%;
+  }
+
+  .third-large {
+    flex: 0 0 68%;
+  }
+
+  /* Row 4: four-column-wide item */
+  .fourth-row {
+    flex: 0 0 92%;
+  }
+
+  /* Row 5: 1-2-1 layout */
+  .fifth-one,
+  .fifth-three {
+    flex: 0 0 20%;
+  }
+
+  .fifth-two {
+    flex: 0 0 44%;
+  }
+
+  /* Reset the tablet order on desktop */
+  .fifth-one {
+    order: 1;
+  }
+
+  .fifth-two {
+    order: 2;
+  }
+
+  .fifth-three {
+    order: 3;
+  }
+
+  /* Row 6: unique five-item layout */
+  .sixth-row {
+    justify-content: space-between;
+  }
+
+  .sixth-row article {
+    flex: 0 0 16%;
+    margin-left: 0;
+    text-align: center;
+  }
 }
