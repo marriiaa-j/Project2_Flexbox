@@ -9,6 +9,7 @@ html {
   box-sizing: inherit;
 }
 
+/* General page styling */
 body {
   margin: 0;
   font-family: Arial, Geneva, sans-serif;
@@ -62,7 +63,7 @@ p {
   line-height: 1.5;
 }
 
-/* First two rows */
+/* Rows 1 and 2 */
 .col-1 {
   background-color: #a3cdd9;
 }
@@ -71,19 +72,7 @@ p {
   background-color: #fffce6;
 }
 
-/* Mobile layout */
-[class*="col-"] {
-  flex: 0 0 92%;
-}
-
-.third-small,
-.third-large,
-.fourth-row,
-.fifth-item,
-.sixth-row article {
-  flex: 0 0 92%;
-}
-
+/* Row 3 */
 .third-small {
   background-color: #ead7f5;
 }
@@ -92,10 +81,12 @@ p {
   background-color: #d6e8f7;
 }
 
+/* Row 4 */
 .fourth-row {
   background-color: #f6e7a1;
 }
 
+/* Row 5 */
 .fifth-one {
   background-color: #d5f0c1;
 }
@@ -108,57 +99,102 @@ p {
   background-color: #c8d9f7;
 }
 
+/* Row 6 */
 .sixth-row article {
   background-color: #d9c2ec;
 }
 
-/* Tablet layout */
+/* =========================
+   Mobile layout
+   ========================= */
+
+[class*="col-"] {
+  flex: 0 0 92%;
+}
+
+.third-small,
+.third-large,
+.fourth-row,
+.fifth-item,
+.sixth-row article {
+  flex: 0 0 92%;
+}
+
+/* Mobile fifth-row order */
+.fifth-one {
+  order: 2;
+}
+
+.fifth-two {
+  order: 1;
+}
+
+.fifth-three {
+  order: 3;
+}
+
+/* =========================
+   Tablet layout
+   ========================= */
+
 @media only screen and (min-width: 480px) {
+  /* Rows 1 and 2 */
   .col-1,
   .col-2 {
     flex: 0 0 44%;
   }
 
-  /* Row 3: two equal-width items on tablet */
+  /* Row 3 */
   .third-small,
   .third-large {
     flex: 0 0 44%;
   }
 
-  /* Row 4: one wide item */
+  /* Row 4 */
   .fourth-row {
     flex: 0 0 92%;
   }
 
-  /* Row 5: two items per line */
+  /* Row 5 */
   .fifth-item {
     flex: 0 0 44%;
   }
 
-  /* Changes the order when resized */
-  .fifth-three {
-    order: -1;
+  /* Tablet fifth-row order */
+  .fifth-one {
+    order: 2;
   }
 
-  /* Row 6: four items per line on tablet */
+  .fifth-two {
+    order: 3;
+  }
+
+  .fifth-three {
+    order: 1;
+  }
+
+  /* Row 6 */
   .sixth-row article {
     flex: 0 0 44%;
   }
 }
 
-/* Desktop layout */
+/* =========================
+   Desktop layout
+   ========================= */
+
 @media only screen and (min-width: 768px) {
-  /* Row 1: four 1-column items */
+  /* Row 1: Four individual boxes */
   .col-1 {
     flex: 0 0 20%;
   }
 
-  /* Row 2: two 2-column items */
+  /* Row 2: Two boxes */
   .col-2 {
     flex: 0 0 44%;
   }
 
-  /* Row 3: 1-column item and 3-column item */
+  /* Row 3: One narrow and one wide box */
   .third-small {
     flex: 0 0 20%;
   }
@@ -167,35 +203,28 @@ p {
     flex: 0 0 68%;
   }
 
-  /* Row 4: four-column-wide item */
+  /* Row 4: One full-width box */
   .fourth-row {
     flex: 0 0 92%;
   }
 
-  /* Row 5: 1-2-1 layout */
-  .fifth-one,
-  .fifth-three {
-    flex: 0 0 20%;
-  }
-
-  .fifth-two {
-    flex: 0 0 44%;
-  }
-
-  /* Reset the tablet order on desktop */
+  /* Row 5: 1-column, 2-column, 1-column layout */
   .fifth-one {
+    flex: 0 0 20%;
     order: 1;
   }
 
   .fifth-two {
+    flex: 0 0 44%;
     order: 2;
   }
 
   .fifth-three {
+    flex: 0 0 20%;
     order: 3;
   }
 
-  /* Row 6: unique five-item layout */
+  /* Row 6: Five items spaced evenly */
   .sixth-row {
     justify-content: space-between;
   }
